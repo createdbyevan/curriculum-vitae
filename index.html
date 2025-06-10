@@ -3,172 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Loïs Collet, étudiant en STMG Finance, futur BTS GPME, stages en boulangerie et comptabilité, compétences en Excel, anglais B1+, permis B et mobilité.">
   <title>Loïs Collet | Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p6ueYd4wU8GpOT8vE5l1Z1fjP3Nf3Zk7H6O7+USZcZz6vj2F4Ue3cQi3lHvYXzCwzWuX+6QbZn2T5O1kB6u7mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="favicon.ico">
   <style>
     :root {
-      --primary: #111;
-      --secondary: #f5f5f5;
-      --accent: #5c9ded;
+      --bg: #f5f7fa;
+      --primary: #1a1a1a;
+      --accent: #0052cc;
+      --accent-hover: #0066e0;
       --font: 'Roboto', sans-serif;
-      --dark-bg: #111;
-      --dark-text: #f5f5f5;
+      --card-bg: #fff;
+      --card-shadow: rgba(0,0,0,0.1);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font);
-      color: var(--primary);
-      background: var(--secondary);
-      scroll-behavior: smooth;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark { background: var(--dark-bg); color: var(--dark-text); }
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(255, 255, 255, 0.9);
-      z-index: 100;
-      transition: background 0.3s;
-    }
-    body.dark header { background: rgba(17, 17, 17, 0.9); }
-    header.scrolled { background: rgba(255,255,255,1); }
-    body.dark header.scrolled { background: rgba(17,17,17,1); }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-    }
-    .logo { font-weight: 700; font-size: 1.2rem; cursor: pointer; }
-    .links a {
-      text-decoration: none;
-      color: inherit;
-      margin-left: 1.5rem;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
-    }
-    .links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      left: 0; bottom: -2px;
-      transition: width 0.3s;
-    }
-    .links a:hover::after { width: 100%; }
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-    .menu-toggle span {
-      width: 25px; height: 3px;
-      background: var(--primary);
-      margin: 4px 0;
-      transition: transform 0.3s, background 0.3s;
-    }
-    body.dark .menu-toggle span { background: var(--dark-text); }
-    .hero {
-      height: 100vh;
-      background: url('https://source.unsplash.com/featured/?finance,technology') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 2rem;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-content { position: relative; color: #fff; z-index: 1; }
-    .hero h1, .hero p, .hero .button {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    .hero.visible h1, .hero.visible p, .hero.visible .button {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    section {
-      max-width: 1000px;
-      margin: 6rem auto;
-      padding: 0 1rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    section.visible { opacity: 1; transform: translateY(0); }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      color: inherit;
-    }
-    .section-title::after {
-      content: '';
-      width: 50px;
-      height: 4px;
-      background: var(--accent);
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-    }
-    .card {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      transition: transform 0.3s;
-    }
-    body.dark .card { background: #222; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-    .card:hover { transform: translateY(-5px); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .progress { background: #e0e0e0; border-radius: 6px; overflow: hidden; margin-top: 0.5rem; }
-    .progress-bar { height: 10px; width: 0; background: var(--accent); transition: width 1.2s ease-out; }
-    .carousel { position: relative; overflow: hidden; }
-    .carousel-track { display: flex; transition: transform 0.5s ease; }
-    .carousel-item { min-width: 100%; }
-    .carousel-controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-    .carousel-controls button { background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 0.5rem; cursor: pointer; border-radius: 50%; }
-    form { max-width: 600px; margin: auto; display: flex; flex-direction: column; }
-    form input, form textarea { padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 6px; font-family: var(--font); }
-    form button { padding: 0.75rem; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; }
-    form button:hover { background: #478bd1; }
-    #toTop {
-      position: fixed; bottom: 2rem; right: 2rem;
-      width: 40px; height: 40px;
-      background: var(--accent); color: #fff;
-      border: none; border-radius: 50%; cursor: pointer;
-      display: none; align-items: center; justify-content: center;
-      font-size: 1.5rem; z-index: 50;
-    }
-    footer { text-align: center; padding: 2rem 0; color: #777; font-size: 0.9rem; }
-    a.button { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.3s; }
-    a.button:hover { background: #478bd1; }
-    @media (max-width: 768px) {
-      .links { display: none; }
-      .menu-toggle { display: flex; }
-      nav.open .links { display: flex; flex-direction: column; background: rgba(255,255,255,0.95); position: absolute; top: 60px; right: 20px; padding: 1rem; border-radius: 8px; }
-      body.dark nav.open .links { background: rgba(17,17,17,0.95); }
-      nav.open .menu-toggle span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-      nav.open .menu-toggle span:nth-child(2) { opacity: 0; }
-      nav.open .menu-toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:var(--font); background:var(--bg); color:var(--primary); scroll-behavior:smooth; }
+    header { position:fixed; top:0; left:0; right:0; background:#fff; box-shadow:0 2px 8px var(--card-shadow); z-index:100; }
+    nav { max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:1rem; }
+    .logo { font-weight:700; font-size:1.5rem; color:var(--accent); text-decoration:none; }
+    .links { display:flex; gap:1.5rem; }
+    .links a { color:var(--primary); text-decoration:none; font-weight:500; position:relative; }
+    .links a::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:2px; background:var(--accent); transition:width .3s; }
+    .links a:hover::after { width:100%; }
+    .social { display:flex; gap:1rem; margin-left:1rem; }
+    .social a { color:var(--primary); font-size:1.2rem; }
+    .social a:hover { color:var(--accent); }
+    .menu-toggle { display:none; font-size:1.5rem; cursor:pointer; }
+    .hero { height:80vh; background:linear-gradient(135deg, var(--accent) 0%, #4390ff 100%); display:flex; align-items:center; justify-content:center; text-align:center; padding:0 2rem; margin-top:64px; }
+    .hero h1 { font-size:3rem; color:#fff; margin-bottom:1rem; }
+    .hero p { font-size:1.2rem; color:#e0e0e0; margin-bottom:2rem; }
+    .button { display:inline-block; padding:.75rem 1.5rem; background:#fff; color:var(--accent); font-weight:700; border-radius:30px; text-decoration:none; transition:background .3s; }
+    .button:hover { background:var(--accent-hover); color:#fff; }
+    main { padding-top:2rem; }
+    section { max-width:800px; margin:4rem auto; padding:0 1rem; }
+    .section-title { font-size:2rem; color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:6px; margin-bottom:1.5rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; }
+    .card { background:var(--card-bg); padding:1.5rem; border-radius:10px; box-shadow:0 4px 12px var(--card-shadow); }
+    .card h3 { margin-bottom:.5rem; color:var(--accent); }
+    .card p { line-height:1.5; }
+    .progress { background:#e0e0e0; border-radius:6px; overflow:hidden; margin-top:.5rem; }
+    .progress-bar { height:8px; width:0; background:var(--accent); transition:width 1s ease-out; }
+    #toTop { position:fixed; bottom:2rem; right:2rem; width:45px; height:45px; background:var(--accent); color:#fff; border:none; border-radius:50%; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 12px var(--card-shadow); font-size:1.5rem; }
+    #toTop:hover { background:var(--accent-hover); }
+    footer { text-align:center; padding:2rem 0; color:#777; font-size:.9rem; }
+    @media(max-width:768px){ .links, .social { display:none; } .menu-toggle { display:block; color:var(--primary); } }
   </style>
 </head>
 <body>
-  <header id="header">
-    <nav id="navbar">
-      <div class="logo">Loïs Collet</div>
-      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+  <header>
+    <nav>
+      <a href="#hero" class="logo">Loïs Collet</a>
       <div class="links">
         <a href="#about-me">À propos</a>
         <a href="#education">Formation</a>
@@ -176,19 +64,75 @@
         <a href="#skills">Compétences</a>
         <a href="#contact">Contact</a>
       </div>
-      <button id="themeToggle">🌙</button>
+      <div class="social">
+        <a href="https://github.com/loiscollet7" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/loiscollet" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
     </nav>
   </header>
-
-  <section class="hero" id="heroSection">
-    <div class="hero-content">
-      <h1>Bonjour, je suis Loïs Collet</h1>
-      <p>18 ans • Étudiant en STMG Finance • 🚗 Permis B – Véhicule disponible</p>
+  <section class="hero" id="hero">
+    <div>
+      <h1>Bonjour, je suis <br>Loïs Collet</h1>
+      <p>Étudiant en STMG Finance – Futur BTS GPME sur le Campus Haute-Follis, Laval</p>
       <a href="#contact" class="button">Me contacter</a>
     </div>
   </section>
-
-  <section id="about-me">
-    <h2 class="section-title">À propos</h2>
-    <div class="card">
-    
+  <main>
+    <section id="about-me">
+      <h2 class="section-title">À propos</h2>
+      <div class="card">
+        <p>Actuellement en fin de Bac STMG option Finance au lycée Lavoisier de Mayenne, je poursuivrai mes études en BTS Gestion de la PME (GPME) sur le Campus Haute-Follis à Laval à la rentrée 2025. Titulaire du permis B et véhiculé, je suis mobile et prêt à m'investir dans des missions variées.</p>
+      </div>
+    </section>
+    <section id="education">
+      <h2 class="section-title">Formation</h2>
+      <div class="grid">
+        <div class="card"><h3>Brevet des collèges</h3><p>Collège Les Garrettes, Villaines-la-Juhel</p></div>
+        <div class="card"><h3>Bac STMG – Finance</h3><p>Lycée Lavoisier, Mayenne (juin 2025)</p></div>
+        <div class="card"><h3>BTS GPME</h3><p>Campus Haute-Follis, Laval (septembre 2025)</p></div>
+      </div>
+    </section>
+    <section id="experience">
+      <h2 class="section-title">Expériences</h2>
+      <div class="grid">
+        <div class="card"><h3>Stage en Boulangerie</h3><p>Production artisanale, relation client et gestion des ventes.</p></div>
+        <div class="card"><h3>Stage Copainville – Comptabilité</h3><p>Saisie comptable, suivi des factures et rapprochements bancaires.</p></div>
+      </div>
+    </section>
+    <section id="skills">
+      <h2 class="section-title">Compétences</h2>
+      <div class="grid">
+        <div class="card"><h3>Anglais</h3><p>Niveau B1+</p><div class="progress"><div class="progress-bar" data-progress="60%"></div></div></div>
+        <div class="card"><h3>Bureautique</h3><p>Word, Excel, PowerPoint</p><div class="progress"><div class="progress-bar" data-progress="80%"></div></div></div>
+        <div class="card"><h3>Mobilité</h3><p>Permis B – Véhicule disponible</p><div class="progress"><div class="progress-bar" data-progress="100%"></div></div></div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:loiscollet7@gmail.com">loiscollet7@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> 06 04 17 33 69</p>
+      </div>
+    </section>
+  </main>
+  <button id="toTop">↑</button>
+  <footer>
+    &copy; 2025 Loïs Collet • <a href="https://github.com/loiscollet7" target="_blank">GitHub</a>
+  </footer>
+  <script>
+    // Menu mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.links');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    // Progress bars
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.progress-bar').forEach(bar => setTimeout(() => bar.style.width = bar.dataset-progress, 500));
+      // Scroll to top
+      const toTop = document.getElementById('toTop');
+      window.addEventListener('scroll', () => toTop.style.display = window.scrollY > 300 ? 'flex' : 'none');
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    });
+  </script>
+</body>
+</html>
