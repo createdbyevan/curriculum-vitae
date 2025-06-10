@@ -1,168 +1,95 @@
-import React from "react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { Mail, Car, Award, Briefcase, Football } from "lucide-react";
-
-export default function CVSite() {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: 0.15 * i, duration: 0.6, type: "spring" },
-    }),
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
-      {/* Hero */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-3xl font-bold tracking-tight">Loïs Collet</h1>
-          <a
-            href="mailto:loiscollet7@gmail.com"
-            className="text-sm md:text-base hover:underline flex items-center gap-2"
-          >
-            <Mail size={18} /> loiscollet7@gmail.com
-          </a>
-        </div>
-      </header>
-
-      {/* Intro */}
-      <section className="max-w-5xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="space-y-4"
-        >
-          <p className="text-xl">
-            Je suis <span className="font-semibold">Loïs</span>, <span className="font-semibold">18 ans</span>,
-            actuellement en terminale <span className="font-semibold">STMG option Finance</span> au lycée
-            Lavoisier (Mayenne) jusqu'à fin juin 2025.
-          </p>
-          <p>
-            Dynamique, curieux et rigoureux, je recherche une première expérience professionnelle pour mettre
-            en pratique mes compétences financières et comptables.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-        >
-          <Card className="shadow-md">
-            <CardHeader className="flex items-center gap-2 text-lg font-medium">
-              <Car size={20} /> Permis B
-            </CardHeader>
-            <CardContent>n°0604173369</CardContent>
-          </Card>
-          <Card className="shadow-md">
-            <CardHeader className="flex items-center gap-2 text-lg font-medium">
-              <Award size={20} /> Anglais
-            </CardHeader>
-            <CardContent>Niveau B1+</CardContent>
-          </Card>
-          <Card className="shadow-md">
-            <CardHeader className="flex items-center gap-2 text-lg font-medium">
-              <Football size={20} /> Loisirs
-            </CardHeader>
-            <CardContent>Football (pratique en club)</CardContent>
-          </Card>
-        </motion.div>
-      </section>
-
-      {/* Education */}
-      <section className="bg-white py-12">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8">📚 Formation</h2>
-          <div className="space-y-6">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              className="relative pl-8"
-            >
-              <span className="absolute -left-0.5 top-1 w-3 h-3 bg-blue-600 rounded-full"></span>
-              <h3 className="font-semibold">Bac STMG – option Finance</h3>
-              <p>Lycée Lavoisier, Mayenne • 2023 – fin juin 2025</p>
-            </motion.div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={2}
-              className="relative pl-8"
-            >
-              <span className="absolute -left-0.5 top-1 w-3 h-3 bg-blue-600 rounded-full"></span>
-              <h3 className="font-semibold">Brevet des collèges</h3>
-              <p>Collège Les Garettes, Villaines‑la‑Juhel • 2020</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section className="py-12">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8">💼 Expériences & Stages</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-            >
-              <Card className="shadow-md h-full">
-                <CardHeader className="flex items-center gap-2 text-lg font-medium">
-                  <Briefcase size={20} /> Boulangerie artisanale
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm">
-                  <p><span className="font-medium">Stage d'observation</span> – 1 semaine</p>
-                  <p>Découverte du fonctionnement d'un commerce de proximité et de la relation client.</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={2}
-            >
-              <Card className="shadow-md h-full">
-                <CardHeader className="flex items-center gap-2 text-lg font-medium">
-                  <Briefcase size={20} /> Copainville (Mayenne)
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm">
-                  <p><span className="font-medium">Service Comptabilité</span> – 2 semaines</p>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Saisie de factures et rapprochements bancaires</li>
-                    <li>Initiation aux outils de gestion financière</li>
-                    <li>Participation à la clôture mensuelle</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <footer className="bg-gray-900 text-gray-100 py-10">
-        <div className="max-w-5xl mx-auto px-6 text-center space-y-4">
-          <h2 className="text-xl font-semibold">Restons en contact</h2>
-          <p className="flex items-center justify-center gap-2 text-sm md:text-base">
-            <Mail size={18} />
-            <a href="mailto:loiscollet7@gmail.com" className="hover:underline">
-              loiscollet7@gmail.com
-            </a>
-          </p>
-          <p className="text-xs text-gray-400">© {new Date().getFullYear()} Loïs Collet – Tous droits réservés.</p>
-        </div>
-      </footer>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Loïs Collet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    .contact {
+      margin-top: 10px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    .section-title {
+      font-size: 1.5em;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 5px;
+    }
+    .internship {
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Loïs Collet</h1>
+    <p>18 ans • Permis B n°0604173369</p>
+    <p class="contact">
+      <a href="mailto:loiscollet7@gmail.com">loiscollet7@gmail.com</a>
+    </p>
+  </header>
+  <section id="education">
+    <h2 class="section-title">Formation</h2>
+    <ul>
+      <li><strong>Brevet des collèges</strong>, Collège Les Garrettes, Villaines-la-Juhel</li>
+      <li><strong>Bac STMG, option Finance</strong>, Lycée Lavoisier, Mayenne (jusqu'au 30 juin 2025)</li>
+    </ul>
+  </section>
+  <section id="experience">
+    <h2 class="section-title">Stages</h2>
+    <div class="internship">
+      <h3>Boulangerie (Stage)</h3>
+      <p>Découverte des process de production, relation clients et gestion des ventes.</p>
     </div>
-  );
-}
+    <div class="internship">
+      <h3>Copainville, service comptabilité (Stage)</h3>
+      <p>Assistance à la saisie comptable, suivi des factures et rapprochements bancaires.</p>
+    </div>
+  </section>
+  <section id="competences">
+    <h2 class="section-title">Compétences</h2>
+    <ul>
+      <li>Anglais : Niveau B1+</li>
+      <li>Maîtrise des outils bureautiques (Word, Excel, PowerPoint)</li>
+    </ul>
+  </section>
+  <section id="loisirs">
+    <h2 class="section-title">Loisirs</h2>
+    <p>Football</p>
+  </section>
+  <footer>
+    <p>&copy; 2025 Loïs Collet</p>
+  </footer>
+</body>
+</html>
